@@ -48,9 +48,10 @@ function App() {
     }
     if (savedLocations[savedLocations.length - 1] === newLocationData) return;
 
-    const isNotDuplicate = checkDuplicates(newLocationData, savedLocations);
+    const isNotDuplicate = newLocationData ? checkDuplicates(newLocationData, savedLocations) : false;
     if (newLocationData && isNotDuplicate) {
         setSavedLocations(prev => [...prev, newLocationData]);
+        setNewLocationData(null);
     } 
     if (!isNotDuplicate) {
       console.log('Duplicate');
