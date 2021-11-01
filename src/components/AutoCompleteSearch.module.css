@@ -1,0 +1,23 @@
+.container {
+    border: 2px solid red;
+}
+.container input {
+    border: 3px solid lime;
+    width: 300px;
+    
+}
+.container ul {
+    margin: 0;
+    padding-inline-start: 0;
+    max-height: 150px;
+    overflow: scroll;
+}
+.container li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0.5em 0.25em;
+    border-bottom: 1px solid blue;
+}
+.container li:hover {
+    background-color: lightblue;
+}
