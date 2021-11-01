@@ -31,6 +31,7 @@ function App() {
       }
     };
     fetchLocationData(clickedCity);
+    setClickedCity(null);
   }, [clickedCity]);
 
   useEffect(() => {
@@ -54,7 +55,8 @@ function App() {
         setNewLocationData(null);
     } 
     if (!isNotDuplicate) {
-      console.log('Duplicate');
+      console.log('Duplicate or last card');
+      setNewLocationData(null);
     }
   }, [newLocationData, savedLocations, isDeleting]);
 
