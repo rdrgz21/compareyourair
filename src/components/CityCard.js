@@ -12,10 +12,10 @@ const CityCard = ({location, index, deleteLocation}) => {
     return (
         <div className={styles.container} >
             <img src={closeIcon} alt='closeIcon' onClick={() => deleteLocation(index)} />
-            <p>Updated  <TimeAgo datetime={lastUpdated} locale='en_GB' /></p>
+            <p className={styles.lastUpdatedText}>Updated  <TimeAgo datetime={lastUpdated} locale='en_GB' /></p>
             <h3>{name}</h3>
-            <p>In {city}, United Kingdom</p>
-            <p>Values: {parameterValues}</p>
+            <p>in {city}, United Kingdom</p>
+            <p className={styles.values}>Values: {parameterValues}</p>
         </div>
     )
 }

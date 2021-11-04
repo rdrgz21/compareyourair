@@ -1,13 +1,44 @@
 .container {
-    border: 2px solid violet;
-    margin: 10px;
-    width: 300px;
+    margin-bottom: 1.5em;
+    width: 100%;
     background-color: white;
     border-radius: 10px;
+    padding: 1.5em 1.25em;
+    position: relative;
+    box-sizing: border-box;
 }
 .container img {
-    width: 30px;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: 1em;
 }
 .container img:hover {
     cursor: pointer;
+}
+.container h3 {
+    color: #7836af;
+    font-weight: 700;
+    padding: 0.5em 0;
+}
+.lastUpdatedText {
+    text-transform: uppercase;
+    font-size: 0.85em;
+    font-weight: 700;
+}
+.values {
+    font-weight: 700;
+    padding-top: 0.5em;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 45%;
+        max-width: 420px;
+    }
+}
+@media (min-width: 1024px) {
+    .container {
+        max-width: 420px;
+    }
 }

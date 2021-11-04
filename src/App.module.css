@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  justify-content: flex;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(to right, #7836af, #3f77ab);
+  min-height: 100vh;
+  width: 90%;
+  padding: 5%;
+}
+.cardContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.messageContainer {
+  padding: 1em 0 2em;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .cardContainer {
+    justify-content: space-around;
+  }
+}
+@media (min-width: 1024px) {
+  .cardContainer {
+    max-width: 70%;
+    justify-content: space-around;
+  }
+}
+
+
+
+
