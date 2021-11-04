@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styles from './AutoCompleteSearch.module.css';
 import {filterCities, baseUrl, createCitiesArray } from '../helpers';
 import axios from 'axios';
+import searchIcon from '../images/search.png'
 
 const AutoCompleteSearch = ({setClickedCity}) => {
     const [cities, setCities] = useState([]);
@@ -23,10 +24,17 @@ const AutoCompleteSearch = ({setClickedCity}) => {
 
     return (
         <div className={styles.container}>
-            <input type='text' placeholder='Enter city name...' onChange={onChangeHandler} />
-            <ul>
-                {results && results.map((city, index) => <li onClick={() => setClickedCity(city)} key={index}>{city}</li>)}
-            </ul>
+            <div className={styles.inputContainer}>
+                <span>
+                    <img src={searchIcon} alt="svgImg" />
+                </span>    
+                <input type='text' placeholder='Enter city name...' onChange={onChangeHandler} />
+            </div>
+            {results && 
+                <ul>
+                    {results.map((city, index) => <li onClick={() => setClickedCity(city)} key={index}>{city}</li>)}
+                </ul>}
+            
         </div>
     )
 }

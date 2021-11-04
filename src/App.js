@@ -73,7 +73,7 @@ function App() {
 
   return (
     <div className='container'>
-      <h1>Compare your air</h1>
+      <h1>Compare your Air</h1>
       <h2>Compare the air quality between cities in the UK.</h2>
       <h2>Select cities to compare using the search tool below.</h2>
       <AutoCompleteSearch setClickedCity={setClickedCity} />
