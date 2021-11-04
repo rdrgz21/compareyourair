@@ -1,4 +1,13 @@
 .container {
     border: 2px solid violet;
     margin: 10px;
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+}
+.container img {
+    width: 30px;
+}
+.container img:hover {
+    cursor: pointer;
 }

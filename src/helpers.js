@@ -22,19 +22,12 @@ export const createCitiesArray = obj => {
     // setCities(newCitiesArray);
 };
 
-export const shapeLocationData = location => {
-  if (location.parameters) {
-    const valuesArray = location.parameters.map(parameter => `${parameter.parameter}: ${parameter.lastValue}`);
-
-    const locationData = {
-      name: location.name,
-      city: location.city,
-      lastUpdated: location.lastUpdated,
-      values: valuesArray
-    };
-    return locationData;
+export const parseParameters = parameters => {
+  if (parameters) {
+    const values =  parameters.map(parameter => `${parameter.parameter}: ${parameter.lastValue}`);
+    return values.join(', ').toUpperCase()
   } else {
-    console.log('Messed up');
+    return 'No values available';
   }
 }
 
