@@ -50,6 +50,7 @@ function App() {
       setNewLocationData(null);
       setSavedLocations([]);
       setIsDeleting(false);
+      setMessage(null);
       return;
     }
     // Check for duplicates in saved locations
