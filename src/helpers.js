@@ -26,7 +26,7 @@ export const removeValueFromArray = (index, array) => {
   }
 
 export const generateRandomIndex = (obj) => {
-    return Math.floor((Math.random() * obj.length) + 1);
+    return Math.floor((Math.random() * obj.length));
 }
 
 // FILTERING AND CHECKING
