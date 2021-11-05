@@ -18,7 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -38,5 +40,9 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://u50g7n0cbj.execute-api.us-east-1.amazonaws.com/"
+  "proxy": "https://u50g7n0cbj.execute-api.us-east-1.amazonaws.com/",
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
+  },
+  "homepage": "http://rdrgz21.github.io/compareyourair"
 }
