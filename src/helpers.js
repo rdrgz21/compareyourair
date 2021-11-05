@@ -8,7 +8,6 @@ export const createCitiesArray = obj => {
     const newCitiesArray = [];
     obj.map(city => newCitiesArray.push(city.city));
     return newCitiesArray;
-    // setCities(newCitiesArray);
 };
 
 export const parseParameters = parameters => {
@@ -22,7 +21,6 @@ export const parseParameters = parameters => {
 
 export const removeValueFromArray = (index, array) => {
     const newArray = [...array];
-    console.log({array});
     newArray.splice(index, 1);
     return newArray
   }
@@ -45,9 +43,6 @@ export const filterCities = (event, cities) => {
 } 
 
 export const checkDuplicates = (newLocation, savedLocations) => {
-    console.log({newLocation});
-    // console.log({savedLocations});
     const isNotDuplicate = savedLocations.every(savedLocation => savedLocation.name !== newLocation.name);
-    console.log({isNotDuplicate});
     return isNotDuplicate;
 }
