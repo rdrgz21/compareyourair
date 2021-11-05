@@ -50,7 +50,6 @@ function App() {
       setNewLocationData(null);
       setSavedLocations([]);
       setIsDeleting(false);
-      setMessage(null);
       return;
     }
     // Check for duplicates in saved locations
@@ -70,6 +69,7 @@ function App() {
   // Delete location from saved
   const deleteLocation = useCallback((index) => {
     setIsDeleting(true);
+    setMessage(null);
     if (savedLocations.length === 1 && index === 0) {
       setSavedLocations([]);
     }
