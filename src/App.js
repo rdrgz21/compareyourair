@@ -77,6 +77,8 @@ function App() {
     setSavedLocations(updatedSavedLocations);
   },[savedLocations, setSavedLocations]);
 
+  const reversedSavedLocations = savedLocations.reverse();
+
   return (
     <div className={styles.container}>
       <Title />
@@ -85,7 +87,7 @@ function App() {
         <p>{message}</p>
       </div>
       <div className={styles.cardContainer}>
-        {savedLocations && savedLocations.map((location, index) => <CityCard location={location} index={index} key={index} deleteLocation={deleteLocation} />)}
+        {savedLocations && reversedSavedLocations.map((location, index) => <CityCard location={location} index={index} key={location} deleteLocation={deleteLocation} />)}
       </div>
     </div>
   );
