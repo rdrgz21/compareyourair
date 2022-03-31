@@ -56,7 +56,7 @@ function App() {
     const isNotDuplicate = newLocationData ? checkDuplicates(newLocationData, savedLocations) : false;
     // If not duplicate then add to saved locations
     if (newLocationData && isNotDuplicate) {
-        setSavedLocations(prev => [...prev, newLocationData]);
+        setSavedLocations(prev => [newLocationData, ...prev]);
         setNewLocationData(null);
     } 
     // If duplicate then display message to inform user
@@ -77,8 +77,6 @@ function App() {
     setSavedLocations(updatedSavedLocations);
   },[savedLocations, setSavedLocations]);
 
-  const reversedSavedLocations = savedLocations.reverse();
-
   return (
     <div className={styles.container}>
       <Title />
@@ -87,7 +85,7 @@ function App() {
         <p>{message}</p>
       </div>
       <div className={styles.cardContainer}>
-        {savedLocations && reversedSavedLocations.map((location, index) => <CityCard location={location} index={index} key={location} deleteLocation={deleteLocation} />)}
+        {savedLocations && savedLocations.map((location, index) => <CityCard location={location} index={index} key={location.id} deleteLocation={deleteLocation} />)}
       </div>
     </div>
   );
