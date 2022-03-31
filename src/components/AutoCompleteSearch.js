@@ -1,21 +1,24 @@
 import React, {useState, useEffect} from 'react';
 import styles from './AutoCompleteSearch.module.css';
 import {filterCities, baseUrl, createCitiesArray } from '../helpers';
-import axios from 'axios';
+import useFetch from '../hooks/useFetch';
 import searchIcon from '../images/search.png'
 
 const AutoCompleteSearch = ({setClickedCity}) => {
     const [cities, setCities] = useState([]);
     const [results, setResults] = useState([]);
 
+    const {data, loading} = useFetch(`${baseUrl}/v1/cities?limit=10000&page=1&offset=0&sort=asc&country_id=gb&order_by=city`);
+
     useEffect(() => {
-        const fetchCityList = async () => {
-            const res = await axios.get(`${baseUrl}/v1/cities?limit=10000&page=1&offset=0&sort=asc&country_id=gb&order_by=city`, { crossdomain: true });
-            const cityArray = createCitiesArray(res.data.results);
-            setCities(cityArray);
+        if (loading) {
+            return;
+        } 
+        if (data) {
+            const citiesArray = createCitiesArray(data.results);
+            setCities(citiesArray);
         }
-        fetchCityList();
-    }, []);
+    }, [data, loading]);
 
     const onChangeHandler = (event) => {
         const filteredCities = filterCities(event, cities);

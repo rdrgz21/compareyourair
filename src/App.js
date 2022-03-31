@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import styles from './App.module.css';
 import axios from 'axios';
-import { baseUrl, generateRandomIndex, checkDuplicates, removeValueFromArray } from './helpers';
+import { baseUrl, generateRandomIndex, checkDuplicates, removeValueFromArray} from './helpers';
 import Title from './components/Title';
 import AutoCompleteSearch from './components/AutoCompleteSearch';
 import CityCard from './components/CityCard';
