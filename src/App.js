@@ -58,7 +58,6 @@ function App() {
       <div className={styles.container}>
         <Title />
         {loading && !allCities ? <h1>Loading...</h1> : <AutoCompleteSearch />}
-        {/* <AutoCompleteSearch /> */}
         <div className={styles.messageContainer}>
           {message && <p>{message}</p>}
         </div>

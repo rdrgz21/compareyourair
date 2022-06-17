@@ -9,19 +9,17 @@ const AutoCompleteSearch = () => {
     const [results, setResults] = useState([]);
     const [clickedCity, setClickedCity] = useState(null);
     const {state, dispatch} = useContext(Context);
-    const {data, loading, error} = useFetch(`${baseUrl}/v2/locations?country_id=gb&city=${clickedCity}&order_by=random`);
+    const {data, loading, error} = useFetch(clickedCity ? `${baseUrl}/v1/locations?country_id=gb&city=${clickedCity}&order_by=random` : '');
 
     const {allCities, savedLocations} = state;
 
     const saveNewLocation = useCallback((newLocationData) => {
         const randomIndex = generateRandomIndex(newLocationData);
         const newLocation = newLocationData.length > 1 ? newLocationData[randomIndex] : newLocationData[0];
-        const isNotDuplicate = checkDuplicates(newLocationData, savedLocations);
+        const isNotDuplicate = checkDuplicates(newLocation, savedLocations);
 
         if (isNotDuplicate) {
-            if (typeof newLocation !== 'undefined') {
-                dispatch({type: ACTIONS.SET_NEW_LOCATION_DATA, payload: newLocation});
-            }
+            dispatch({type: ACTIONS.SET_SAVED_LOCATIONS, payload: [...savedLocations, newLocation]});
         } else {
             dispatch({message: ACTIONS.SET_MESSAGE, payload: `Data for ${newLocationData.name} is already displayed`})
         }
@@ -30,20 +28,24 @@ const AutoCompleteSearch = () => {
     useEffect(() => {
         dispatch({type: ACTIONS.SET_MESSAGE, payload: ''});
 
-        if (loading) return;
-
         if (error) {
             dispatch({type: ACTIONS.SET_MESSAGE, payload: error})
         }
 
-        if (clickedCity && data) {
+        if ((clickedCity && !data) || (clickedCity && data && !data.results.length)) {
+            dispatch({type: ACTIONS.SET_MESSAGE, payload: `No data for ${clickedCity} currently available`});
+            return;
+        }
+
+        if (clickedCity && data && data.results && clickedCity === data.results[0].city) {
             const locationData = data.results;
             saveNewLocation(locationData);
-        } else if (clickedCity && !data) {
-            dispatch({type: ACTIONS.SET_MESSAGE, payload: `No data for ${clickedCity} currently avaiable`})
         }
+
         // Reset clicked city at end of effect
-        setClickedCity(null);
+        if (!loading) {
+            setClickedCity(null);
+        }
       }, [clickedCity, data, dispatch, error, loading, saveNewLocation]);
 
     const onChangeHandler = (event) => {
